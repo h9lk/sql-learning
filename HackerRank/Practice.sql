@@ -1,3 +1,5 @@
+-- Only MS SQL
+
 -- Revising the Select Query I
 Select *
 From city
@@ -179,3 +181,122 @@ Select
         Else 'Not A Triangle' 
     End 
 From triangles;
+
+-- The PADS
+Select 
+    Concat(name, '(', left(occupation, 1), ')')
+From occupations
+Order by name;
+
+Select 
+    Concat('There are a total of', ' ',count(*),' ', lower(occupation), 's.') as name
+From occupations
+Group by occupation
+Order by count(*);
+
+-- Occupations
+Select min(Doctor), min(Professor), min(Singer), min(Actor)
+From
+(
+    Select row_number() over(partition by Occupation order by name) as a,
+    
+    Case 
+        When OCCUPATION = "Doctor" Then name 
+    End as Doctor,
+    Case 
+        when OCCUPATION = "Professor" Then name 
+    End as Professor,
+    Case 
+        when OCCUPATION = "Actor" Then name 
+    End as Actor,
+    Case 
+        when OCCUPATION = "Singer" Then name 
+    End as Singer
+    
+    From occupations
+) as b
+Group by b.a
+Order by b.a;
+
+-- Revising Aggregations - The Count Function
+Select count(name)
+From city
+Where population>100000;
+
+-- Revising Aggregations - The Sum Function
+Select sum(population)
+From city
+Where district='California';
+
+-- Revising Aggregations - Averages
+Select avg(population)
+From city
+where district='California';
+
+-- Average Population
+Select round(avg(population),0)
+From city;
+
+-- Japan Population
+Select sum(population)
+From city
+Where countrycode ='JPN';
+
+-- Population Density Difference
+Select (max(population)-min(population))
+From city;
+
+-- The Blunder
+Select
+    Cast(Ceiling((Avg(Cast(salary AS Float)) - 
+                  Avg(Cast(Replace(salary, 0, '')AS Float)))) AS INT)
+From employees;
+
+-- Top Earners
+Select max(months*salary), count(months*salary)
+From employee
+Where employee_id in 
+    (Select employee_id 
+    From employee 
+    Where months*salary in 
+        (Select Max(months*salary) 
+        From employee));
+
+-- Population Census
+Select sum(ct.population)
+From city ct
+Join country cn on cn.Code=ct.CountryCode 
+Where cn.continent = 'Asia';
+
+-- African Cities
+Select city.name
+From city
+Join country on country.Code=city.CountryCode
+Where continent='Africa';
+
+-- Average Population of Each Continent
+Select cn.Continent, floor(avg(ct.Population))
+From city ct
+Join country cn on cn.Code=ct.CountryCode 
+Group by cn.Continent;
+
+-- The Report
+Select
+    Case
+        When g.Grade >= 8 Then s.Name
+        When g.Grade<8 Then Null
+    End, g.Grade, s.Marks 
+From Students as s
+Join Grades as g on s.Marks Between g.Min_Mark and g.Max_Mark
+Order by g.Grade desc, s.Name;
+
+-- Top Competitors
+Select h.hacker_id, h.name 
+From hackers as h
+    Join submissions as s on h.hacker_id=s.hacker_id 
+    Join challenges as c on c.challenge_id=s.challenge_id
+    Join difficulty as d on c.difficulty_level=d.difficulty_level
+Where s.score=d.score
+Group by h.hacker_id,h.name 
+Having count(h.hacker_id)>1
+Order by count(c.challenge_id) desc, h.hacker_id;
