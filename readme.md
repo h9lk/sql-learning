@@ -8,3 +8,48 @@
 - [ ] [Codecademy](https://www.codecademy.com/catalog/language/sql)
 - [ ] [Codewars](https://www.codewars.com/dashboard)
 - [ ] [SQL-EX](https://sql-ex.ru/?Lang=1)
+
+# Frequently used functions 
+## Aggregate
+	* ```Avg```
+	* ```Count```
+	* ```Max```
+	* ```Min```
+	* ```Sum```
+
+## Conversion
+	* ```Cast```
+	* ```Convert```
+
+## Date & Time
+	* ```Datediff```
+	* ```Datepart```
+
+## Expressions
+	* ```Case```
+	* ```Coalesce```
+	* ```Top```
+	* ```Limit```
+	* ```Distinct```
+
+## Mathematical
+	* ```Ceiling```
+	* ```Floor```
+	* ```Sqrt```
+	* ```Power```
+
+## Ranking
+	* ```Row_number```
+	* ```Rank```
+
+## String 
+	* ```Concat```
+	* ```Len```
+	* ```Left```
+	* ```Ltrim```
+	* ```Lower```
+	* ```Replace```
+	* ```Right```
+	* ```Substring``
+  
+ 
