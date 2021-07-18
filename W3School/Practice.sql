@@ -80,7 +80,7 @@ Where Country = 'Norway';
 
 -- Exercise 3
 Update Customers
-Set City = 'Oslo'
+Set City = 'Oslo',
 Country = 'Norway'
 WHERE CustomerID = 32;
 

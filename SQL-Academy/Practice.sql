@@ -70,13 +70,13 @@ FROM Trip AS t
 JOIN Pass_in_trip AS pt ON pt.trip=t.id
 JOIN Passenger AS p ON p.id=pt.passenger 
 AND p.name='Bruce Willis'
-GROUP BY t.town_to
+GROUP BY t.town_to;
 
 -- Exercise № 15
 SELECT DISTINCT Trip.time_in
 FROM Trip, Passenger
 WHERE Passenger.name='Steve Martin' AND town_to='London'
-GROUP BY time_in LIMIT 1
+GROUP BY time_in LIMIT 1;
 
 -- Exercise № 16
 SELECT p.name, COUNT(pt.trip) AS count
@@ -113,7 +113,7 @@ JOIN Goods AS g ON g.good_id=p.good
 JOIN GoodTypes AS gt ON gt.good_type_id=g.type 
 WHERE gt.good_type_name='entertainment'
 GROUP BY fm.status, fm.member_name
-ORDER BY costs
+ORDER BY costs;
 
 -- Exercise № 21
 SELECT g.good_name 
@@ -135,7 +135,7 @@ JOIN GoodTypes AS gt ON gt.good_type_id=g.type
 WHERE gt.good_type_name='delicacies'
 GROUP BY g.good_name, p.unit_price
 ORDER BY p.unit_price DESC LIMIT 1;
-//-----
+--
 SELECT good_name, unit_price
 FROM Payments, Goods, GoodTypes
 WHERE good_type_id=type
@@ -153,15 +153,15 @@ SELECT fm.member_name, SUM(p.amount*p.unit_price) as costs
 FROM FamilyMembers AS fm
 JOIN Payments AS p ON p.family_member=fm.member_id
 WHERE Year(p.date)=2005 AND MONTH(p.date)=6
-GROUP BY fm.member_name
+GROUP BY fm.member_name;
 
 -- Exercise № 25
 SELECT g.good_name 
 FROM Goods AS g                                                        
 LEFT JOIN Payments AS p ON g.good_id=p.good AND YEAR(p.date)=2005 
 WHERE p.good IS NULL
-GROUP BY g.good_id
-//-----
+GROUP BY g.good_id;
+--
 SELECT g.good_name FROM Goods AS g
 WHERE NOT EXISTS 
 	(SELECT good FROM Payments AS p
@@ -197,13 +197,13 @@ WHERE p.id IN
 FROM Passenger AS p
 JOIN Pass_in_trip AS pt ON p.id=pt.passenger
 JOIN Trip AS t ON t.id=pt.trip 
-WHERE t.town_to='Moscow' AND t.plane='TU-134')
+WHERE t.town_to='Moscow' AND t.plane='TU-134');
 
 -- Exercise № 30
 SELECT pt.trip, COUNT(pt.passenger) AS count 
 FROM Pass_in_trip AS pt
 GROUP BY pt.trip
-ORDER BY count DESC
+ORDER BY count DESC;
 
 -- Exercise № 31
 SELECT *
@@ -212,13 +212,13 @@ WHERE member_name LIKE '%Quincey'
 
 -- Exercise № 32
 SELECT FLOOR(AVG((YEAR(CURRENT_DATE)-YEAR(birthday))-(RIGHT(CURRENT_DATE,5)<RIGHT(birthday,5)))) AS age
-FROM FamilyMembers
+FROM FamilyMembers;
 
 -- Exercise № 33
 SELECT AVG(p.unit_price) as cost
 FROM Payments AS p
 JOIN Goods AS g On g.good_id=p.good
-WHERE g.good_name LIKE '%caviar'
+WHERE g.good_name LIKE '%caviar';
 
 -- Exercise № 34
 SELECT COUNT(c.name) as count 
@@ -242,7 +242,7 @@ WHERE student.address like 'ul. Pushkina%';
 
 -- Exercise № 37
 SELECT Min((YEAR(CURRENT_DATE)-YEAR(birthday))-(RIGHT(CURRENT_DATE,5)<RIGHT(birthday,5))) AS year
-FROM Student
+FROM Student;
 
 -- Exercise № 38
 SELECT COUNT(s.first_name) as count
@@ -260,7 +260,7 @@ SELECT sub.name as subjects
 FROM Subject AS sub 
 JOIN Schedule AS s ON s.subject=sub.id
 JOIN Teacher AS t ON t.id=s.teacher
-WHERE t.last_name LIKE 'Romashkin'
+WHERE t.last_name LIKE 'Romashkin';
 
 -- Exercise № 41
 SELECT tp.start_pair
@@ -275,7 +275,7 @@ SELECT TIMEDIFF(
     WHERE id=4),
         (SELECT start_pair
         FROM Timepair
-        WHERE id=2)) AS time
+        WHERE id=2)) AS time;
 
 -- Exercise № 43
 SELECT t.last_name
@@ -283,7 +283,7 @@ FROM  Teacher as t
 JOIN Schedule AS s ON s.teacher=t.id
 JOIN Subject AS sub ON sub.id=s.subject
 WHERE sub.name LIKE 'Physical Culture'
-ORDER BY t.last_name
+ORDER BY t.last_name;
 
 -- Exercise № 46
 SELECT c.name 
@@ -293,20 +293,20 @@ WHERE c.id IN
     FROM Class AS c
     JOIN Schedule AS s ON s.class=c.id
     JOIN Teacher AS t ON t.id=s.teacher
-    WHERE t.last_name LIKE 'Krauze')
+    WHERE t.last_name LIKE 'Krauze');
 
 -- Exercise № 47
 SELECT COUNT(s.number_pair) as count
 FROM Schedule AS s
 JOIN Teacher AS t ON t.id=s.teacher
-WHERE t.last_name='Krauze' AND s.date Like '2019-08-30'
+WHERE t.last_name='Krauze' AND s.date Like '2019-08-30';
 
 -- Exercise № 48
 SELECT c.name, COUNT(sc.class) AS count
 FROM Class AS c
 JOIN Student_in_class AS sc ON sc.class=c.id 
 GROUP BY c.name, sc.class
-ORDER BY count DESC
+ORDER BY count DESC;
 
 -- Exercise № 49	
 SELECT
@@ -316,7 +316,7 @@ SELECT
         ON class=Class.id
     WHERE Class.name='10 A') /
     (SELECT COUNT(*)
-    FROM Student_in_class) * 100 AS percent
+    FROM Student_in_class) * 100 AS percent;
 
 -- Exercise № 50	
 SELECT
@@ -325,45 +325,45 @@ SELECT
     JOIN Student_in_class AS sc ON s.id=sc.student
     WHERE YEAR(s.birthday)=2000) /
     (SELECT COUNT(*)
-    FROM Student) * 100) AS percent
+    FROM Student) * 100) AS percent;
 
 -- Exercise № 51
 INSERT INTO Goods 
-SELECT COUNT(*) + 1, 'Cheese', 2 FROM Goods
+SELECT COUNT(*) + 1, 'Cheese', 2 FROM Goods;
 
 -- Exercise № 52
 INSERT INTO GoodTypes 
-SELECT COUNT(*) + 1, 'auto' FROM GoodTypes
+SELECT COUNT(*) + 1, 'auto' FROM GoodTypes;
 
 -- Exercise № 53
 UPDATE FamilyMembers
 SET member_name = "Andie Anthony"
-WHERE member_name = "Andie Quincey"
+WHERE member_name = "Andie Quincey";
 
 -- Exercise № 54
 DELETE FROM FamilyMembers
-WHERE member_name LIKE '%Quincey'
+WHERE member_name LIKE '%Quincey';
 
 -- Exercise № 56
 DELETE FROM Trip
-WHERE Trip.town_from='Moscow'
+WHERE Trip.town_from='Moscow';
 
 -- Exercise № 57
 UPDATE Timepair
 SET start_pair=(start_pair+INTERVAL 30 MINUTE),
-	end_pair=(end_pair+INTERVAL 30 MINUTE)
-//-----
+	end_pair=(end_pair+INTERVAL 30 MINUTE);
+--
 UPDATE Timepair
 SET start_pair=ADDTIME(start_pair,
-        '00:30:00'), end_pair=ADDTIME(end_pair, '00:30:00')
+        '00:30:00'), end_pair=ADDTIME(end_pair, '00:30:00');
 
 -- Exercise № 59
 SELECT *
 FROM Users
-WHERE phone_number LIKE '+375%'
+WHERE phone_number LIKE '+375%';
 
 -- Exercise № 65
 SELECT res.room_id, FLOOR(AVG(rev.rating)) AS rating
 FROM Reservations AS res
 JOIN Reviews AS rev ON res.id=rev.reservation_id
-GROUP BY res.room_id
+GROUP BY res.room_id;

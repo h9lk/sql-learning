@@ -175,3 +175,78 @@ Join boxoffice b on b.movie_id=m.id;
 Select title
 From movies
 Where year%2=0;
+
+--SQL Lesson 10: Queries with aggregates (Pt. 1) 
+-- Find the longest time that an employee has been at the studio 
+SELECT years_employed as year
+FROM employees
+Order by year desc
+Limit 1;
+
+-- For each role, find the average number of years employed by employees in that role
+SELECT role, avg(years_employed) as year
+FROM employees
+Group by role;
+
+-- Find the total number of employee years worked in each building 
+SELECT building, sum(years_employed) as sum
+FROM employees
+Group by building;
+
+-- SQL Lesson 11: Queries with aggregates (Pt. 2) 
+-- Find the number of Artists in the studio (without a HAVING clause) 
+SELECT Count(*)
+FROM employees
+Where role='Artist';
+
+-- Find the number of Employees of each role in the studio 
+SELECT role, Count(*)
+FROM employees
+Group by role;
+
+-- Find the total number of years employed by all Engineers 
+SELECT sum(years_employed) as sum
+FROM employees
+Where role='Engineer';
+
+-- SQL Lesson 12: Order of execution of a Query 
+-- Find the number of movies each director has directed
+SELECT director, Count(*)
+FROM movies
+Group by director;
+
+-- Find the total domestic and international sales that can be attributed to each director
+SELECT 
+    m.director, 
+    sum(b.domestic_sales+b.international_sales) as sum
+FROM movies m
+Join boxoffice b on b.movie_id=m.id
+Group by m.director;
+
+-- SQL Lesson 13: Inserting rows 
+-- Add the studio's new production, Toy Story 4 to the list of movies (you can use any director)
+INSERT INTO movies
+(id, title, director)
+VALUES (15, 'Toy Story 4', 'John Lasseter');
+
+-- Toy Story 4 has been released to critical acclaim! It had a rating of 8.7, and made 340 million domestically and 270 million internationally. Add the record to the BoxOffice table.
+INSERT INTO boxoffice
+(movie_id, rating, domestic_sales, international_sales)
+VALUES (15, 8.7, 340000000,  270000000);
+
+-- SQL Lesson 14: Updating rows
+-- The director for A Bug's Life is incorrect, it was actually directed by John Lasseter
+UPDATE movies
+SET director='John Lasseter'
+WHERE title like '%Life';
+
+-- The year that Toy Story 2 was released is incorrect, it was actually released in 1999
+UPDATE movies
+SET year=1999
+WHERE title='Toy Story 2';
+
+-- Both the title and director for Toy Story 8 is incorrect! The title should be "Toy Story 3" and it was directed by Lee Unkrich 
+UPDATE movies
+SET title='Toy Story 3',
+    director='Lee Unkrich'
+WHERE title='Toy Story 8';
