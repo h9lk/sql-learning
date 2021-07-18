@@ -11,45 +11,45 @@
 
 # Frequently used functions 
 ## Aggregate
-	* ```Avg```
-	* ```Count```
-	* ```Max```
-	* ```Min```
-	* ```Sum```
+* ```Avg```
+* ```Count```
+* ```Max```
+* ```Min```
+* ```Sum```
 
 ## Conversion
-	* ```Cast```
-	* ```Convert```
+* ```Cast```
+* ```Convert```
 
 ## Date & Time
-	* ```Datediff```
-	* ```Datepart```
+* ```Datediff```
+* ```Datepart```
 
 ## Expressions
-	* ```Case```
-	* ```Coalesce```
-	* ```Top```
-	* ```Limit```
-	* ```Distinct```
+* ```Case```
+* ```Coalesce```
+* ```Top```
+* ```Limit```
+* ```Distinct```
 
 ## Mathematical
-	* ```Ceiling```
-	* ```Floor```
-	* ```Sqrt```
-	* ```Power```
+* ```Ceiling```
+* ```Floor```
+* ```Sqrt```
+* ```Power```
 
 ## Ranking
-	* ```Row_number```
-	* ```Rank```
+* ```Row_number```
+* ```Rank```
 
 ## String 
-	* ```Concat```
-	* ```Len```
-	* ```Left```
-	* ```Ltrim```
-	* ```Lower```
-	* ```Replace```
-	* ```Right```
-	* ```Substring``
+* ```Concat```
+* ```Len```
+* ```Left```
+* ```Ltrim```
+* ```Lower```
+* ```Replace```
+* ```Right```
+* ```Substring```
   
  
