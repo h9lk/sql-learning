@@ -4,6 +4,7 @@
 - [x] [W3Schools](https://www.w3schools.com/sql/default.asp)
 - [x] [SQL-Academy](https://sql-academy.org/en)
 - [x] [SQL-Bolt](https://sqlbolt.com/)
+- [x] [PostgreSQL Exercises](https://www.pgexercises.com/)
 - [x] [HackerRank](https://www.hackerrank.com/domains/sql)
 - [ ] [Codecademy](https://www.codecademy.com/catalog/language/sql)
 - [ ] [Codewars](https://www.codewars.com/dashboard)
@@ -11,45 +12,43 @@
 
 # Frequently used functions 
 ## Aggregate
-	* ```Avg```
-	* ```Count```
-	* ```Max```
-	* ```Min```
-	* ```Sum```
+* ```Avg```
+* ```Count```
+* ```Max```
+* ```Min```
+* ```Sum```
 
 ## Conversion
-	* ```Cast```
-	* ```Convert```
+* ```Cast```
+* ```Convert```
 
 ## Date & Time
-	* ```Datediff```
-	* ```Datepart```
+* ```Datediff```
+* ```Datepart```
 
 ## Expressions
-	* ```Case```
-	* ```Coalesce```
-	* ```Top```
-	* ```Limit```
-	* ```Distinct```
+* ```Case```
+* ```Coalesce```
+* ```Top```
+* ```Limit```
+* ```Distinct```
 
 ## Mathematical
-	* ```Ceiling```
-	* ```Floor```
-	* ```Sqrt```
-	* ```Power```
+* ```Ceiling```
+* ```Floor```
+* ```Sqrt```
+* ```Power```
 
 ## Ranking
-	* ```Row_number```
-	* ```Rank```
+* ```Row_number```
+* ```Rank```
 
 ## String 
-	* ```Concat```
-	* ```Len```
-	* ```Left```
-	* ```Ltrim```
-	* ```Lower```
-	* ```Replace```
-	* ```Right```
-	* ```Substring``
-  
- 
+* ```Concat```
+* ```Len```
+* ```Left```
+* ```Ltrim```
+* ```Lower```
+* ```Replace```
+* ```Right```
+* ```Substring```
