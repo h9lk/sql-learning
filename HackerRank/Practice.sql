@@ -55,6 +55,10 @@ Order by l, city;
 -- Weather Observation Station 5
 Select top(1) city, len(city) as l
 From station
+Order by l, city;
+
+Select top(1) city, len(city) as l
+From station
 Order by l desc, city desc;
 
 -- Weather Observation Station 6
